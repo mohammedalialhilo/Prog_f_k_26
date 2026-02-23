@@ -27,11 +27,11 @@ public class ProductsController : ControllerBase
 
         return Ok(_products);
     }
-    [HttpGet("{id}")]
+    [HttpGet("search/{productName}")]
 
-    public ActionResult FindProduct(int id)
+    public ActionResult FindProduct(string productName)
     {
-        Product product = _products.FirstOrDefault(c => c.Id == id);
+        Product product = _products.FirstOrDefault(c => c.ProductName == productName);
         if (product == null) return NotFound("Inget produkt fins....");
 
         return Ok(product);
