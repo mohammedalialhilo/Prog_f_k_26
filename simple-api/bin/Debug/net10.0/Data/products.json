@@ -13,5 +13,10 @@
     "id": 3,
     "productName": "Laptop2",
     "price": 10000
+  },
+  {
+    "id": 4,
+    "productName": "Mouse",
+    "price": 500
   }
 ]

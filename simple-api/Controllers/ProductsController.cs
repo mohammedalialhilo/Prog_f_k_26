@@ -24,37 +24,40 @@ public class ProductsController : ControllerBase
     {
 
         var products = Storage<Product>.ReadJson(_path);
-        return Ok(products);
+        return Ok(new { status = "Success", StatusCode = "200", items = products.Count, Data = products });
     }
-    [HttpGet("search/{productName}")]
+    [HttpGet("{id}")]
 
-    public ActionResult FindProduct(string productName)
+    public ActionResult FindProduct(int id)
     {
         var products = Storage<Product>.ReadJson(_path);
 
-        Product product = products.FirstOrDefault(c => c.ProductName == productName);
+        Product product = products.SingleOrDefault(c => c.Id == id);
+        if (product == null) return NotFound(new { Success = false, Message = "Hittar inte produkt" });
+
+        return Ok(new { status = "Success", StatusCode = "200", Data = product });
+    }
+    [HttpGet("/search/{Product}")]
+
+    public ActionResult FindProductByName(string Product)
+    {
+        var products = Storage<Product>.ReadJson(_path);
+
+        Product product = products.SingleOrDefault(c => c.ProductName == Product);
         if (product == null) return NotFound("Inget produkt fins....");
 
-        return Ok(product);
+        return Ok(new { status = "Success", StatusCode = "200", Data = product });
     }
 
     [HttpPost()]
     public ActionResult AddProduct(Product product)
     {
-        // var products = new List<Product>
-        // {
-        //     (Product)Storage<Product>.ReadJson(_path),
-        //     // products.Add(product);
-        //     product
-        // };
-        // Storage<Product>.WriteJson(_path, products);
-        // var save = Storage<Product>.ReadJson(_path);
         var products = Storage<Product>.ReadJson(_path);
         products.Add(product);
         Storage<Product>.WriteJson(_path, products);
 
 
-        return StatusCode(201);
+        return CreatedAtAction(nameof(FindProduct), new { id = product.Id }, product);
     }
     [HttpPut("{id}")]
     public ActionResult UpdateProduct(int id, Product product)
@@ -66,7 +69,7 @@ public class ProductsController : ControllerBase
         products.Remove(item);
         products.Add(product);
         Storage<Product>.WriteJson(_path, products);
-        return Ok(products);
+        return CreatedAtAction(nameof(FindProduct), new { id = product.Id }, product);
     }
     [HttpDelete("{id}")]
     public ActionResult DeleteProduct(int id)
@@ -76,7 +79,7 @@ public class ProductsController : ControllerBase
         products.Remove(product);
         Storage<Product>.WriteJson(_path, products);
 
-        return Ok(201);
+        return Ok(products);
     }
 }
 
