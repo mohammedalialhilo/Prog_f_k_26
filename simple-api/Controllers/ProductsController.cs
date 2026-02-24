@@ -1,5 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc;
+using simple_api.Data;
 using simple_api.Models;
 
 namespace simple_api.Controllers;
@@ -8,30 +9,30 @@ namespace simple_api.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase
 {
-    private readonly IList<Product> _products;
+    private readonly IWebHostEnvironment _environment;
+    private readonly string _path;
 
-    public ProductsController()
+    public ProductsController(IWebHostEnvironment environment)
     {
-        _products =
-        [
-            new Product { Id = 1, ProductName = "Laptop", Price = 10000M },
-            new Product { Id = 2, ProductName = "PC", Price = 30000M },
-        ];
+        _environment = environment;
+        _path = string.Concat(_environment.ContentRootPath, "/Data/products.json");
+
 
     }
     [HttpGet()]
     public ActionResult ListProducts()
     {
 
-
-
-        return Ok(_products);
+        var products = Storage<Product>.ReadJson(_path);
+        return Ok(products);
     }
     [HttpGet("search/{productName}")]
 
     public ActionResult FindProduct(string productName)
     {
-        Product product = _products.FirstOrDefault(c => c.ProductName == productName);
+        var products = Storage<Product>.ReadJson(_path);
+
+        Product product = products.FirstOrDefault(c => c.ProductName == productName);
         if (product == null) return NotFound("Inget produkt fins....");
 
         return Ok(product);
@@ -40,26 +41,42 @@ public class ProductsController : ControllerBase
     [HttpPost()]
     public ActionResult AddProduct(Product product)
     {
-        _products.Add(product);
+        // var products = new List<Product>
+        // {
+        //     (Product)Storage<Product>.ReadJson(_path),
+        //     // products.Add(product);
+        //     product
+        // };
+        // Storage<Product>.WriteJson(_path, products);
+        // var save = Storage<Product>.ReadJson(_path);
+        var products = Storage<Product>.ReadJson(_path);
+        products.Add(product);
+        Storage<Product>.WriteJson(_path, products);
 
-        return StatusCode(201, _products);
+
+        return StatusCode(201);
     }
     [HttpPut("{id}")]
     public ActionResult UpdateProduct(int id, Product product)
     {
-        Product item = _products.FirstOrDefault(c => c.Id == id);
+        var products = Storage<Product>.ReadJson(_path);
+        Product item = products.SingleOrDefault(c => c.Id == id);
         if (product == null) return NotFound("Inget produkt fins....");
 
-        _products.Remove(item);
-        _products.Add(product);
-        return Ok(_products);
+        products.Remove(item);
+        products.Add(product);
+        Storage<Product>.WriteJson(_path, products);
+        return Ok(products);
     }
     [HttpDelete("{id}")]
     public ActionResult DeleteProduct(int id)
     {
-        Product product = _products.FirstOrDefault(c => c.Id == id);
-        _products.Remove(product);
-        return Ok(_products);
+        var products = Storage<Product>.ReadJson(_path);
+        Product product = products.FirstOrDefault(c => c.Id == id);
+        products.Remove(product);
+        Storage<Product>.WriteJson(_path, products);
+
+        return Ok(201);
     }
 }
 

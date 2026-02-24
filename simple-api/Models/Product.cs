@@ -1,6 +1,6 @@
 ﻿namespace simple_api.Models;
 
-public record class Product
+public record Product
 {
     public int Id { get; set; }
     public string ProductName { get; set; }

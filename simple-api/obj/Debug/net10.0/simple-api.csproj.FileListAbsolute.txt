@@ -31,3 +31,5 @@ C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-a
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-api\obj\Debug\net10.0\simple-api.pdb
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-api\obj\Debug\net10.0\simple-api.genruntimeconfig.cache
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-api\obj\Debug\net10.0\ref\simple-api.dll
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-api\obj\Debug\net10.0\simple-api.sourcelink.json
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\simple-api\bin\Debug\net10.0\Data\products.json
