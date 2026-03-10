@@ -1,5 +1,6 @@
 using eShop.Data;
 using eShop.DTOs.Carts;
+using eShop.DTOs.Customers;
 using eShop.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +22,24 @@ public class CartsController(EShopContext context) : ControllerBase
             Product product = await context.Products.FindAsync(model.ProductId);
             if (product is null) return BadRequest("Produkten existerar inte!");
 
-            Cart cart = await context.Carts.SingleOrDefaultAsync(c => c.CustomerId == model.CustomerId);
-            
+            Cart cart = await context.Carts.Include(c => c.CartItems).SingleOrDefaultAsync(c => c.CustomerId == model.CustomerId);
+
+            // if (cart is not null)
+            // {
+            //     CartItem existingCartItem = await context.CartItems
+            //         .SingleOrDefaultAsync(ci => ci.CartId == cart.CartId && ci.ProductId == model.ProductId);
+
+            //     if (existingCartItem is not null)
+            //     {
+            //         existingCartItem.Quantity += model.Quantity;
+            //         existingCartItem.Price = model.Price;
+            //         context.CartItems.Update(existingCartItem);
+            //         await context.SaveChangesAsync();
+
+            //         return Ok(new { Message = "Antalet i kundvagnen har uppdaterats." });
+            //     }
+            // }
+
 
             if (cart is null)
             {
@@ -33,16 +50,44 @@ public class CartsController(EShopContext context) : ControllerBase
 
                 context.Carts.Add(cart);
             }
-
-            CartItem cartItem = new()
+            // var exist = cart.CartItems.Any(i => i.ProductId == model.ProductId);
+            if (cart.CartItems is not null)
             {
-                Cart = cart,
-                Product = product,
-                Quantity = model.Quantity,
-                Price = model.Price
-            };
+                var foundItem = cart.CartItems.SingleOrDefault(i => i.ProductId == model.ProductId);
+                if (foundItem is not null)
+                {
+                    foundItem.Quantity = model.Quantity;
 
-            context.CartItems.Add(cartItem);
+                }
+                else
+                {
+                    CartItem cartItem = new()
+                    {
+                        Cart = cart,
+                        Product = product,
+                        Quantity = model.Quantity,
+                        Price = model.Price
+                    };
+
+                    context.CartItems.Add(cartItem);
+                }
+
+            }
+            else
+            {
+                CartItem cartItem = new()
+                {
+                    Cart = cart,
+                    Product = product,
+                    Quantity = model.Quantity,
+                    Price = model.Price
+                };
+
+                context.CartItems.Add(cartItem);
+            }
+
+
+
 
             await context.SaveChangesAsync();
 
@@ -54,6 +99,13 @@ public class CartsController(EShopContext context) : ControllerBase
             return StatusCode(500, "Något gick fel när kundvagnen skulle sparas...");
         }
     }
+    // [HttpPut()]
+    // public async Task<ActionResult> UpdateCart(PutCustomerDto model)
+    // {
+
+    //     // return CreatedAtAction(nameof(FindCart), new { id = cart.CartId }, new { cart.CartId, cart.CreatedDate });
+
+    // }
 
     [HttpGet()]
     public async Task<ActionResult> ListAllCarts()
