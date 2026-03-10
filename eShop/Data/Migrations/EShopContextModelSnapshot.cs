@@ -80,6 +80,27 @@ namespace eShop.Data.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("eShop.Entities.OrderItem", b =>
+                {
+                    b.Property<int>("SalesOrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("SalesOrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("eShop.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -111,6 +132,25 @@ namespace eShop.Data.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("eShop.Entities.SalesOrder", b =>
+                {
+                    b.Property<int>("SalesOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("SalesOrderId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("SalesOrders");
                 });
 
             modelBuilder.Entity("eShop.Entities.Supplier", b =>
@@ -175,6 +215,25 @@ namespace eShop.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("eShop.Entities.OrderItem", b =>
+                {
+                    b.HasOne("eShop.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Entities.SalesOrder", "SalesOrder")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("SalesOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("SalesOrder");
+                });
+
             modelBuilder.Entity("eShop.Entities.Product", b =>
                 {
                     b.HasOne("eShop.Entities.Supplier", "Supplier")
@@ -184,9 +243,25 @@ namespace eShop.Data.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("eShop.Entities.SalesOrder", b =>
+                {
+                    b.HasOne("eShop.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("eShop.Entities.Cart", b =>
                 {
                     b.Navigation("CartItems");
+                });
+
+            modelBuilder.Entity("eShop.Entities.SalesOrder", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("eShop.Entities.Supplier", b =>
