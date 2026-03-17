@@ -17,7 +17,7 @@ public class EShopContext(DbContextOptions options) : DbContext(options)
     {
         // Skapat två kolumner som sammansatt primary key...
         modelBuilder.Entity<CartItem>().HasKey(c => new { c.CartId, c.ProductId });
-        modelBuilder.Entity<OrderItem>().HasKey(o => new { o.SalesOrderId, o.ProductId });
+        modelBuilder.Entity<OrderItem>().HasKey(c => new { c.ProductId, c.SalesOrderId });
         base.OnModelCreating(modelBuilder);
     }
 }

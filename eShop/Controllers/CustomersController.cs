@@ -56,7 +56,7 @@ public class CustomersController(EShopContext context) : ControllerBase
             cart.Customer.FirstName,
             cart.Customer.LastName,
             cart.Customer.Email,
-            TotalSum = cart.CartItems.Sum(c => c.Price * c.Quantity),
+            Total = cart.CartItems.Sum(p => p.Price * p.Quantity),
             Items = cart.CartItems.Select(c => new
             {
                 c.ProductId,
@@ -66,21 +66,6 @@ public class CustomersController(EShopContext context) : ControllerBase
                 LineSum = c.Price * c.Quantity
             })
         };
-
-
-        // var carts = await context.Carts.Select(cart => new
-        // {
-        //     cart.CustomerId,
-        //     cart.CartId,
-        //     cart.CreatedDate,
-        //     Item = cart.CartItems.Select(cartItem => new
-        //     {
-        //         CartItemId = cartItem.CartId,
-        //         cartItem.ProductId,
-        //         cartItem.Quantity,
-        //         cartItem.Price
-        //     })
-        // }).ToListAsync();
 
         return Ok(new
         {
