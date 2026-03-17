@@ -11,7 +11,7 @@ namespace eShop.Controllers;
 [ApiController]
 public class CustomersController(EShopContext context) : ControllerBase
 {
-    [Authorize()]
+    [Authorize(Roles = "Admin")]
     [HttpGet()]
     public async Task<ActionResult> ListAllCustomers()
     {

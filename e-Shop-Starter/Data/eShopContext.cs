@@ -1,11 +1,10 @@
 ﻿using eShop.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Data;
 
-public class EShopContext(DbContextOptions options) : IdentityDbContext<IdentityUser>(options)
+public class EShopContext(DbContextOptions options) : IdentityDbContext<User>(options)
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
