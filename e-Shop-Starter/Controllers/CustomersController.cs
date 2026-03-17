@@ -1,6 +1,7 @@
 using eShop.Data;
 using eShop.DTOs.Customers;
 using eShop.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ namespace eShop.Controllers;
 [ApiController]
 public class CustomersController(EShopContext context) : ControllerBase
 {
+    [Authorize()]
     [HttpGet()]
     public async Task<ActionResult> ListAllCustomers()
     {

@@ -1,5 +1,8 @@
 using eShop.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +13,26 @@ builder.Services.AddDbContext<EShopContext>(options =>
         builder.Configuration.GetConnectionString("sqlitedev"));
 });
 
+builder.Services.AddIdentityCore<IdentityUser>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 8;
+ }) 
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<EShopContext>();
+
+    
 builder.Services.AddControllers();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+      ValidateIssuer = false,
+      ValidateAudience = false,
+      ValidateLifetime = true  
+    };
+});
 
 var app = builder.Build();
 
