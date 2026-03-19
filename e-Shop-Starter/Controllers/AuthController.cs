@@ -4,13 +4,14 @@ using eShop.DTOs.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.VisualStudio.TextTemplating;
 using eShop.Entities;
+using eShop.Services;
 
 namespace eShop.Controllers;
 
-    [Authorize()]
+    
     [Route("api/auth")]
     [ApiController]
-    public class AuthController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager) : ControllerBase
+    public class AuthController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, TokenService tokenService) : ControllerBase
 {
     [AllowAnonymous]
     [HttpPost("register")]
@@ -35,7 +36,8 @@ namespace eShop.Controllers;
         }
 
         await userManager.AddToRoleAsync(user, "User");
-        return StatusCode(201);
+        var token = await tokenService.CreateToken(user);
+        return StatusCode(201,new {user.Email, token });
         }catch(Exception ex)
         {
             return StatusCode(500, ex.Message);
@@ -51,9 +53,13 @@ namespace eShop.Controllers;
         {
             return Unauthorized(new{Success=false, message="Du är inte behörig"});
         }
-        return Ok(new{Success = true , Email= user.Email});
+
+        //generera billjet
+        var token = await tokenService.CreateToken(user);
+
+        return Ok(new{Success = true , user.Email, token});
     }
-    [AllowAnonymous]
+    [Authorize(Policy ="RequireAdminRights")]
     [HttpPost("role")]
     public async Task<ActionResult> CreateRole([FromQuery]string roleName)
     {
@@ -66,7 +72,7 @@ namespace eShop.Controllers;
         }
         return Ok();
     }
-    [AllowAnonymous]
+    [Authorize(Policy ="RequireAdminRights")]
     [HttpPost("userrole")]
     public async Task<ActionResult> AddUserToRole([FromQuery] string userName, string roleName)
     {

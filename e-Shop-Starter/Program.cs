@@ -4,6 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using eShop.Entities;
+using System.Text;
+using eShop.Services;
+using System.IO.Compression;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +27,15 @@ builder.Services.AddIdentityCore<User>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EShopContext>();
 
+
+builder.Services.AddScoped<TokenService>();
+
     
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    options.Filters.Add(new AuthorizeFilter(policy));
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -31,9 +43,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     {
       ValidateIssuer = false,
       ValidateAudience = false,
-      ValidateLifetime = true  
+      ValidateLifetime = true,
+      ValidateIssuerSigningKey = true,
+      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("tokenSettings:tokenKey").Value))  
     };
 });
+
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireCorprateRights",policy => policy.RequireRole("Admin","Manager"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireAdminRights",policy => policy.RequireRole("Admin"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireSalesRights",policy => policy.RequireRole("Admin","Manager","Sales"));
 
 builder.Services.AddAuthorization();
 

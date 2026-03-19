@@ -1,6 +1,7 @@
 using eShop.Data;
 using eShop.DTOs;
 using eShop.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ namespace eShop.Controllers;
 [ApiController]
 public class ProductsController(EShopContext context) : ControllerBase
 {
+    [AllowAnonymous]
     [HttpGet()]
     public async Task<ActionResult> ListAllProducts()
     {
@@ -31,7 +33,7 @@ public class ProductsController(EShopContext context) : ControllerBase
             Data = products
         });
     }
-
+   [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult> FindProduct(int id)
     {
@@ -53,7 +55,7 @@ public class ProductsController(EShopContext context) : ControllerBase
 
         return NotFound();
     }
-
+   [AllowAnonymous]
     [HttpGet("product/{itemNumber}")]
     public async Task<ActionResult> FindProduct(string itemNumber)
     {
@@ -62,7 +64,8 @@ public class ProductsController(EShopContext context) : ControllerBase
 
         return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = product });
     }
-
+        
+    [Authorize(Policy ="RequireSalesRights")]
     [HttpPost()]
     public async Task<ActionResult> AddProduct(PostProductDto product)
     {
@@ -83,7 +86,7 @@ public class ProductsController(EShopContext context) : ControllerBase
         await context.SaveChangesAsync();
         return CreatedAtAction(nameof(FindProduct), new { id = item.Id }, product);
     }
-
+[Authorize(Policy ="RequireSalesRights")]
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateProduct(int id, Product product)
     {
@@ -100,7 +103,7 @@ public class ProductsController(EShopContext context) : ControllerBase
 
         return NoContent();
     }
-
+[Authorize(Policy ="RequireCorprateRights")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> RemoveProduct(int id)
     {
@@ -113,7 +116,7 @@ public class ProductsController(EShopContext context) : ControllerBase
 
         return NoContent();
     }
-
+[Authorize(Policy ="RequireSalesRights")]
     [HttpPatch("{id}")]
     public async Task<ActionResult> PatchProduct(int id, Product product)
     {

@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 namespace eShop.Controllers;
 
 [Route("api/customers")]
+
 [ApiController]
 public class CustomersController(EShopContext context) : ControllerBase
 {
-    [Authorize(Roles = "Admin")]
+   
     [HttpGet()]
     public async Task<ActionResult> ListAllCustomers()
     {
@@ -27,6 +28,8 @@ public class CustomersController(EShopContext context) : ControllerBase
 
         return Ok(new { Success = true, StatusCode = 200, Items = customers.Count, Data = customers });
     }
+    
+[Authorize(Policy ="RequireSalesRights")]
 
     [HttpGet("{id}")]
     public async Task<ActionResult> FindCustomer(int id)
@@ -42,10 +45,12 @@ public class CustomersController(EShopContext context) : ControllerBase
 
         return Ok(new { Success = true, StatusCode = 200, Items = "Not defined", Data = dto });
     }
+[Authorize(Policy ="RequireSalesRights")]
 
     [HttpGet("{id}/cart")]
     public async Task<ActionResult> ListCartContent(int id)
     {
+        var user = User; 
         Cart cart = await context.Carts
             .Include(c => c.Customer)
             .Include(c => c.CartItems)
@@ -78,7 +83,7 @@ public class CustomersController(EShopContext context) : ControllerBase
         });
 
     }
-
+    [Authorize(Policy ="RequireCorprateRights")]
     [HttpPost()]
     public async Task<ActionResult> AddCustomer(PostCustomerDto model)
     {
@@ -107,7 +112,7 @@ public class CustomersController(EShopContext context) : ControllerBase
         await context.SaveChangesAsync();
         return NoContent();
     }
-
+  
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteCustomer(int id)
     {

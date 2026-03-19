@@ -1,5 +1,6 @@
 using eShop.Data;
 using eShop.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace eShop.Controllers;
 [ApiController]
 public class SuppliersController(EShopContext context) : ControllerBase
 {
+    [Authorize(Policy ="RequireCorprateRights")]
     [HttpGet()]
     public async Task<ActionResult> ListAllSuppliers()
     {
@@ -16,6 +18,7 @@ public class SuppliersController(EShopContext context) : ControllerBase
         return Ok(new { Success = true, StatusCode = 200, Items = suppliers.Count, Data = suppliers });
     }
 
+      [Authorize(Policy ="RequireCorprateRights")]
     [HttpGet("{id}")]
     public async Task<ActionResult> FindSupplier(int id)
     {
@@ -39,6 +42,7 @@ public class SuppliersController(EShopContext context) : ControllerBase
         };
         return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = supplierToReturn });
     }
+        [Authorize(Policy ="RequireAdminRights")]
 
     [HttpPost()]
     public async Task<ActionResult> AddSupplier(Supplier supplier)

@@ -1,6 +1,7 @@
 using eShop.Data;
 using eShop.DTOs.Carts;
 using eShop.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ namespace eShop.Controllers;
 [ApiController]
 public class CartsController(EShopContext context) : ControllerBase
 {
+    [Authorize(Policy ="RequireSalesRights")]
     [HttpPost()]
     public async Task<ActionResult> AddCartItem(PostCartItemDto model)
     {
@@ -78,7 +80,7 @@ public class CartsController(EShopContext context) : ControllerBase
             return StatusCode(500, "Något gick fel när kundvagnen skulle sparas...");
         }
     }
-
+[Authorize(Policy ="RequireSalesRights")]
     [HttpGet()]
     public async Task<ActionResult> ListAllCarts()
     {
@@ -96,7 +98,7 @@ public class CartsController(EShopContext context) : ControllerBase
 
         return Ok(new { Success = true, StatusCode = 200, Items = carts.Count, Data = carts });
     }
-
+[Authorize(Policy ="RequireSalesRights")]
     [HttpGet("{id}")]
     public async Task<ActionResult> FindCart(int id)
     {
