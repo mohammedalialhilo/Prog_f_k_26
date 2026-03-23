@@ -15,22 +15,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<EShopContext>(options =>
 {
-    options.UseSqlite(
-        builder.Configuration.GetConnectionString("sqlitedev"));
+    // options.UseSqlite(
+    //     builder.Configuration.GetConnectionString("sqlitedev"));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("postgresdev"));
 });
 
 builder.Services.AddIdentityCore<User>(options =>
 {
     options.User.RequireUniqueEmail = true;
     options.Password.RequiredLength = 8;
- }) 
+})
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EShopContext>();
 
 
 builder.Services.AddScoped<TokenService>();
 
-    
+
 builder.Services.AddControllers(options =>
 {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -41,17 +43,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-      ValidateIssuer = false,
-      ValidateAudience = false,
-      ValidateLifetime = true,
-      ValidateIssuerSigningKey = true,
-      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("tokenSettings:tokenKey").Value))  
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("tokenSettings:tokenKey").Value))
     };
 });
 
-builder.Services.AddAuthorizationBuilder().AddPolicy("RequireCorprateRights",policy => policy.RequireRole("Admin","Manager"));
-builder.Services.AddAuthorizationBuilder().AddPolicy("RequireAdminRights",policy => policy.RequireRole("Admin"));
-builder.Services.AddAuthorizationBuilder().AddPolicy("RequireSalesRights",policy => policy.RequireRole("Admin","Manager","Sales"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireCorprateRights", policy => policy.RequireRole("Admin", "Manager"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireAdminRights", policy => policy.RequireRole("Admin"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireSalesRights", policy => policy.RequireRole("Admin", "Manager", "Sales"));
 
 builder.Services.AddAuthorization();
 
