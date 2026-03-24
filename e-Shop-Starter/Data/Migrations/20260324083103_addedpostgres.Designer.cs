@@ -12,8 +12,8 @@ using eShop.Data;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    [Migration("20260323122433_PostgressDb")]
-    partial class PostgressDb
+    [Migration("20260324083103_addedpostgres")]
+    partial class addedpostgres
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

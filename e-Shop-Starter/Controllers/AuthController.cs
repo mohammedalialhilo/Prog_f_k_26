@@ -8,10 +8,10 @@ using eShop.Services;
 
 namespace eShop.Controllers;
 
-    
-    [Route("api/auth")]
-    [ApiController]
-    public class AuthController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, TokenService tokenService) : ControllerBase
+
+[Route("api/auth")]
+[ApiController]
+public class AuthController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, TokenService tokenService) : ControllerBase
 {
     [AllowAnonymous]
     [HttpPost("register")]
@@ -19,26 +19,33 @@ namespace eShop.Controllers;
     {
         try
         {
-            
-        var user = new User{
-            Email = model.Email,
-            UserName = model.Email,
-            PhoneNumber = model.Phone,
-            FirstName = model.FirstName,
-            LastName = model.LastName
-            
-        };
 
-        var result = await userManager.CreateAsync(user, model.Password);
-        if (!result.Succeeded)
-        {
-            return StatusCode(500, result.Errors);
+            var user = new User
+            {
+                Email = model.Email,
+                UserName = model.Email,
+                PhoneNumber = model.Phone,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+            {
+                return StatusCode(500, result.Errors);
+            }
+
+            var role = await roleManager.FindByNameAsync("User");
+            if (role is null)
+            {
+                await roleManager.CreateAsync(new IdentityRole { Name = "User" });
+            }
+            await userManager.AddToRoleAsync(user, "User");
+            var token = await tokenService.CreateToken(user);
+            return StatusCode(201, new { user.Email, token });
         }
-
-        await userManager.AddToRoleAsync(user, "User");
-        var token = await tokenService.CreateToken(user);
-        return StatusCode(201,new {user.Email, token });
-        }catch(Exception ex)
+        catch (Exception ex)
         {
             return StatusCode(500, ex.Message);
         }
@@ -49,40 +56,40 @@ namespace eShop.Controllers;
     {
         var user = await userManager.FindByNameAsync(model.Email);
 
-        if(user is null || !await userManager.CheckPasswordAsync(user, model.Password))
+        if (user is null || !await userManager.CheckPasswordAsync(user, model.Password))
         {
-            return Unauthorized(new{Success=false, message="Du är inte behörig"});
+            return Unauthorized(new { Success = false, message = "Du är inte behörig" });
         }
 
         //generera billjet
         var token = await tokenService.CreateToken(user);
 
-        return Ok(new{Success = true , user.Email, token});
+        return Ok(new { Success = true, user.Email, token });
     }
-    [Authorize(Policy ="RequireAdminRights")]
+    [Authorize(Policy = "RequireAdminRights")]
     [HttpPost("role")]
-    public async Task<ActionResult> CreateRole([FromQuery]string roleName)
+    public async Task<ActionResult> CreateRole([FromQuery] string roleName)
     {
         var role = await roleManager.FindByNameAsync(roleName);
 
-        if(role is null)
+        if (role is null)
         {
-            role = new IdentityRole{Name = roleName};
+            role = new IdentityRole { Name = roleName };
             await roleManager.CreateAsync(role);
         }
         return Ok();
     }
-    [Authorize(Policy ="RequireAdminRights")]
+    [Authorize(Policy = "RequireAdminRights")]
     [HttpPost("userrole")]
     public async Task<ActionResult> AddUserToRole([FromQuery] string userName, string roleName)
     {
         var user = await userManager.FindByNameAsync(userName);
         var role = await roleManager.FindByNameAsync(roleName);
-        if(user is null && role is null) return BadRequest("Användare eller role fins inte...");
+        if (user is null && role is null) return BadRequest("Användare eller role fins inte...");
 
         await userManager.AddToRoleAsync(user, roleName);
         return Ok();
-       
+
     }
 }
 
