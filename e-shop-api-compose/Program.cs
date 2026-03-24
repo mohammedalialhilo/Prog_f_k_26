@@ -1,0 +1,82 @@
+using eShop.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using eShop.Entities;
+using System.Text;
+using eShop.Services;
+using System.IO.Compression;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddDbContext<EShopContext>(options =>
+{
+    // options.UseSqlite(
+    //     builder.Configuration.GetConnectionString("sqlitedev"));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("postgresdev"));
+});
+
+builder.Services.AddIdentityCore<User>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 8;
+})
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<EShopContext>();
+
+
+builder.Services.AddScoped<TokenService>();
+
+
+builder.Services.AddControllers(options =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    options.Filters.Add(new AuthorizeFilter(policy));
+});
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("tokenSettings:tokenKey").Value))
+    };
+});
+
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireCorprateRights", policy => policy.RequireRole("Admin", "Manager"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireAdminRights", policy => policy.RequireRole("Admin"));
+builder.Services.AddAuthorizationBuilder().AddPolicy("RequireSalesRights", policy => policy.RequireRole("Admin", "Manager", "Sales"));
+
+builder.Services.AddAuthorization();
+
+var app = builder.Build();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+try
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<User>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    var seedDb = new SeedDatabase(userManager, roleManager);
+    await seedDb.InitDb(app);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+app.Run();
