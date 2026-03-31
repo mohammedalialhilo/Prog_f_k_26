@@ -252,7 +252,7 @@ namespace eShop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("SupplierId")
+                    b.Property<int>("SupplierId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -487,7 +487,9 @@ namespace eShop.Data.Migrations
                 {
                     b.HasOne("eShop.Entities.Supplier", "Supplier")
                         .WithMany("Products")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Supplier");
                 });

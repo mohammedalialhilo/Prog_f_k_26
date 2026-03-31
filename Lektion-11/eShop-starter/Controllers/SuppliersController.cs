@@ -1,51 +1,62 @@
-using eShop.Data;
+using eShop.DTOs.Suppliers;
 using eShop.Entities;
+using eShop.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ZstdSharp.Unsafe;
 
 namespace eShop.Controllers;
 
 [Route("api/suppliers")]
 [ApiController]
-public class SuppliersController(EShopContext context) : ControllerBase
+public class SuppliersController(ISupplierReopsitory repo) : ControllerBase
 {
     [HttpGet()]
     public async Task<ActionResult> ListAllSuppliers()
-    {
-        List<Supplier> suppliers = await context.Suppliers.ToListAsync();
+    { try{
+        List<GetSuppliersDto> suppliers = await repo.ListAllSuppliers();
         return Ok(new { Success = true, StatusCode = 200, Items = suppliers.Count, Data = suppliers });
+    }
+        catch
+        {
+            return StatusCode(500 , "Sorry, Något gick fel");
+        }
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult> FindSupplier(int id)
     {
-        Supplier supplier = await context.Suppliers
-            // Gör en join med produkt tabellen (två tabells join)... 
-            .Include(s => s.Products)
-            .SingleOrDefaultAsync(s => s.SupplierId == id);
-        if (supplier is null) return NotFound();
-
-        var supplierToReturn = new
+        try
         {
-            supplier.SupplierId,
-            supplier.SupplierName,
-            Products = supplier.Products.Select(p => new
-            {
-                p.ItemNumber,
-                p.ProductName,
-                p.Price
-            })
-
-        };
-        return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = supplierToReturn });
+            GetSupplierDto supplier = await repo.FindSupplier(id);
+         return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = supplier });
+        }
+        catch 
+        {
+            return NotFound();
+        }
     }
 
     [HttpPost()]
-    public async Task<ActionResult> AddSupplier(Supplier supplier)
+    public async Task<ActionResult> AddSupplier(PostSupplierDto supplier)
     {
-        context.Suppliers.Add(supplier);
-        await context.SaveChangesAsync();
-        return CreatedAtAction(nameof(FindSupplier), new { id = supplier.SupplierId }, supplier);
+        try
+        {
+            var id = await repo.AddSupplier(supplier);
+
+        if(id > 0){
+             return CreatedAtAction(nameof(FindSupplier), new { id }, supplier);
+             }
+        else
+        {
+            return BadRequest("Vi saknar info");
+        }
+        }
+        catch
+        {
+            return StatusCode(500, "Något gick fel vid sparningen");
+            
+        }
     }
 }
 

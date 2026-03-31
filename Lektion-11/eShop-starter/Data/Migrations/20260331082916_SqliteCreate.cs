@@ -237,12 +237,12 @@ namespace eShop.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    SupplierId = table.Column<int>(type: "INTEGER", nullable: false),
                     ItemNumber = table.Column<string>(type: "TEXT", nullable: false),
                     ProductName = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    SupplierId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -251,7 +251,8 @@ namespace eShop.Data.Migrations
                         name: "FK_Products_Suppliers_SupplierId",
                         column: x => x.SupplierId,
                         principalTable: "Suppliers",
-                        principalColumn: "SupplierId");
+                        principalColumn: "SupplierId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

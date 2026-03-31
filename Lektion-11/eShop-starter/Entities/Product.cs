@@ -1,10 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace eShop.Entities;
 
 public record Product
 {
     public int Id { get; set; }
+    public int SupplierId { get; set; }
     [NotNull]
     public string ItemNumber { get; set; }
     [NotNull]
@@ -15,5 +17,6 @@ public record Product
     public string Description { get; set; }
     // Navigeringsegenskap låter oss hämta
     // vilken leverantör äger produkten
+    [ForeignKey("SupplierId")]
     public Supplier Supplier { get; set; }
 }

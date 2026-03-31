@@ -1,0 +1,86 @@
+﻿using eShop.DTOs.Suppliers;
+using Microsoft.EntityFrameworkCore;
+using eShop.Entities;
+using eShop.Interfaces;
+using eShop.Data;
+
+namespace eShop.Repositories;
+
+public class SupplierRepository(EShopContext context) : ISupplierReopsitory
+{
+    public async Task<int> AddSupplier(PostSupplierDto supplier)
+    {
+        try
+        {
+            var entity = new Supplier
+            {
+                SupplierName = supplier.Name,
+                Email  = supplier.Email,
+                Phone = supplier.Phone,
+                Address = supplier.Address,
+                PostalCode = supplier.PostalCode,
+                City = supplier.City
+            };
+
+            context.Suppliers.Add(entity);
+             await context.SaveChangesAsync();
+
+             return entity.SupplierId;
+        }catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<GetSupplierDto> FindSupplier(int id)
+    {
+        try
+        {
+            Supplier supplier = await context.Suppliers.FindAsync(id);
+            // Supplier supplier = await context.Suppliers.FindAsync(id);
+            if(supplier is null) throw new Exception("Kunde inte hitta levantör");
+
+            GetSupplierDto dto = new()
+            {
+                Id = supplier.SupplierId,
+                    Name = supplier.SupplierName,
+                    Email = supplier.Email,
+                    Phone = supplier.Phone,
+                    Address = supplier.Address,
+                    PostalCode = supplier.PostalCode,
+                    City = supplier.City
+            };
+            return dto;
+        }
+        catch(Exception ex)
+        {
+            throw new Exception($"Ett fel inträffade i ListAllSuppliers, {ex.Message}");
+        }
+    }
+
+    public async Task<List<GetSuppliersDto>> ListAllSuppliers()
+    {
+        try
+        {
+            List<Supplier> result = await context.Suppliers.ToListAsync();
+            List<GetSuppliersDto> suppliers = [];
+
+            foreach (var supplier in result)
+            {
+                var dto = new GetSuppliersDto
+                {
+                    Id = supplier.SupplierId,
+                    Name = supplier.SupplierName,
+                    Email = supplier.Email,
+                    Phone = supplier.Phone
+                };
+                suppliers.Add(dto);
+            }
+            return suppliers;
+        }
+        catch(Exception ex)
+        {
+            throw new Exception($"Ett fel inträffade i ListAllSuppliers, {ex.Message}");
+        }
+    }
+}
