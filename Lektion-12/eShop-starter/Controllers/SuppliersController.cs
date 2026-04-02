@@ -1,9 +1,6 @@
 using eShop.DTOs.Suppliers;
-using eShop.Entities;
 using eShop.Interfaces;
-using eShop.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Controllers;
 

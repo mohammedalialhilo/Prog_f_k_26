@@ -49,7 +49,7 @@ public class ProductsController(IUnitOfWork uow) : ControllerBase
             return StatusCode(500, "Något server fel inträffade");
             
         }
-        catch (Exception ex)
+        catch (Exception )
         {
             return StatusCode(500, "Något server fel inträffade");
         }
