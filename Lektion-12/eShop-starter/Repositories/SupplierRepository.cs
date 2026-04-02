@@ -8,7 +8,7 @@ namespace eShop.Repositories;
 
 public class SupplierRepository(EShopContext context) : ISupplierRepository
 {
-    public async Task<int> AddSupplier(PostSupplierDto supplier)
+    public async Task<bool> AddSupplier(PostSupplierDto supplier)
     {
         try
         {
@@ -23,9 +23,8 @@ public class SupplierRepository(EShopContext context) : ISupplierRepository
             };
 
             context.Suppliers.Add(entity);
-            await context.SaveChangesAsync();
 
-            return entity.SupplierId;
+            return true;
         }
         catch (Exception ex)
         {

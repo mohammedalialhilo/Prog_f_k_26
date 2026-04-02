@@ -1,6 +1,6 @@
 ﻿namespace eShop.DTOs.Products;
 
-public record PostProductDto
+public class PostProductDto
 {
     public string SupplierName { get; set; }
     public string ItemNumber { get; set; }

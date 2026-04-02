@@ -17,6 +17,16 @@ public class MockSupplier : ISupplierRepository
 
     public Task<List<GetSuppliersDto>> ListAllSuppliers()
     {
+    //    List<GetSuppliersDto> suppliers = [];
+    //    suppliers.Add(new GetSuppliersDto{Id =1, Email="test@mail.com",Phone="010-1111",Name="Test supplier"});
+    //    return Task.FromResult(suppliers);
+        throw new NotImplementedException();
+       
+    }
+
+    Task<bool> ISupplierRepository.AddSupplier(PostSupplierDto supplier)
+    {
         throw new NotImplementedException();
     }
+
 }

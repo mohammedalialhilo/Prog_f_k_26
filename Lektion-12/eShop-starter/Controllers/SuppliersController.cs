@@ -9,14 +9,14 @@ namespace eShop.Controllers;
 
 [Route("api/suppliers")]
 [ApiController]
-public class SuppliersController(ISupplierRepository repo) : ControllerBase
+public class SuppliersController(IUnitOfWork uow) : ControllerBase
 {
     [HttpGet()]
     public async Task<ActionResult> ListAllSuppliers()
     {
         try
         {
-            List<GetSuppliersDto> suppliers = await repo.ListAllSuppliers();
+            List<GetSuppliersDto> suppliers = await uow.SupplierRepository.ListAllSuppliers();
             return Ok(new { Success = true, StatusCode = 200, Items = suppliers.Count, Data = suppliers });
         }
         catch (Exception ex)
@@ -30,7 +30,7 @@ public class SuppliersController(ISupplierRepository repo) : ControllerBase
     {
         try
         {
-            GetSupplierDto supplier = await repo.FindSupplier(id);
+            GetSupplierDto supplier = await uow.SupplierRepository.FindSupplier(id);
             return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = supplier });
         }
         catch
@@ -44,16 +44,12 @@ public class SuppliersController(ISupplierRepository repo) : ControllerBase
     {
         try
         {
-            var id = await repo.AddSupplier(supplier);
-
-            if (id > 0)
+            if( await uow.SupplierRepository.AddSupplier(supplier))
             {
-                return CreatedAtAction(nameof(FindSupplier), new { id }, supplier);
+                await uow.Complete();
+                return StatusCode(201, supplier);                              
             }
-            else
-            {
-                return BadRequest("Vi saknar information om vad som gick fel!");
-            }
+             return BadRequest("Vi saknar information om vad som gick fel!");
         }
         catch
         {
