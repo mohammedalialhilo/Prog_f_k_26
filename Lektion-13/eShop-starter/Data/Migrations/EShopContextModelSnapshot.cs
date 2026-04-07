@@ -281,7 +281,7 @@ namespace eShop.Data.Migrations
 
             modelBuilder.Entity("eShop.Entities.Supplier", b =>
                 {
-                    b.Property<int>("SupplierId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -292,21 +292,18 @@ namespace eShop.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostalCode")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SupplierName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("SupplierId");
+                    b.HasKey("Id");
 
                     b.ToTable("Suppliers");
                 });
