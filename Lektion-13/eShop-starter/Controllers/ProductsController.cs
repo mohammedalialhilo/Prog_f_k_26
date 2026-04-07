@@ -1,3 +1,4 @@
+using AutoMapper;
 using eShop.Data;
 using eShop.DTOs.Products;
 using eShop.Entities;
@@ -9,7 +10,7 @@ namespace eShop.Controllers;
 
 [Route("api/products")]
 [ApiController]
-public class ProductsController(IGenericRepository<Product> repo) : ControllerBase
+public class ProductsController(IGenericRepository<Product> repo,IMapper mapper) : ControllerBase
 {
     [HttpGet()]
     public async Task<ActionResult> ListAllProducts()
@@ -17,7 +18,8 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
         try
         {
             var products = await repo.ListAllAsync();
-            return Ok(new { Success = true, StatusCode = 200, Items = products.Count, Data = products });
+            var producsDto = mapper.Map<IList<GetProductsDto>>(products);
+            return Ok(new { Success = true, StatusCode = 200, Items = products.Count, Data = producsDto });
         }
         catch
         {
@@ -40,10 +42,11 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
     }
 
     [HttpPost()]
-    public async Task<ActionResult> AddProduct(Product product)
+    public async Task<ActionResult> AddProduct(PostProductDto model)
     {
         try
         {
+            var product = mapper.Map<Product>(model);
             repo.Add(product);
             if( await repo.SaveAllAsync())
             {

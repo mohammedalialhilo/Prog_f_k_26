@@ -175,3 +175,4 @@ C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-13\eShop-starter\obj\Debug\net1
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-13\eShop-starter\obj\Debug\net10.0\eShop.pdb
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-13\eShop-starter\obj\Debug\net10.0\eShop.genruntimeconfig.cache
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-13\eShop-starter\obj\Debug\net10.0\ref\eShop.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-13\eShop-starter\bin\Debug\net10.0\AutoMapper.dll

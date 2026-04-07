@@ -1,3 +1,4 @@
+using AutoMapper;
 using eShop.DTOs.Suppliers;
 using eShop.Entities;
 using eShop.Interfaces;
@@ -7,7 +8,7 @@ namespace eShop.Controllers;
 
 [Route("api/suppliers")]
 [ApiController]
-public class SuppliersController(IGenericRepository<Supplier> repo) : ControllerBase
+public class SuppliersController(IGenericRepository<Supplier> repo,IMapper mapper) : ControllerBase
 {
     [HttpGet()]
     public async Task<ActionResult> ListAllSuppliers()
@@ -55,10 +56,11 @@ public class SuppliersController(IGenericRepository<Supplier> repo) : Controller
     }
 
     [HttpPost()]
-    public async Task<ActionResult> AddSupplier(Supplier supplier)
+    public async Task<ActionResult> AddSupplier(PostSupplierDto model)
     {
         try
         {
+            var supplier = mapper.Map<Supplier>(model);
              repo.Add(supplier);
             if( await repo.SaveAllAsync())
             {
