@@ -242,14 +242,12 @@ namespace eShop.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ItemNumber")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SupplierId")

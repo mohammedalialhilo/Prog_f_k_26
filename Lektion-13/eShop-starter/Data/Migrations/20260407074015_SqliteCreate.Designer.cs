@@ -11,7 +11,7 @@ using eShop.Data;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    [Migration("20260331082906_SqliteCreate")]
+    [Migration("20260407074015_SqliteCreate")]
     partial class SqliteCreate
     {
         /// <inheritdoc />
@@ -245,14 +245,12 @@ namespace eShop.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ItemNumber")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SupplierId")
