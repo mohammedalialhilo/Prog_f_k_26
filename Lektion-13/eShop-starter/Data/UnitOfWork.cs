@@ -5,7 +5,7 @@ namespace eShop.Data;
 
 public class UnitOfWork(EShopContext context) : IUnitOfWork
 {
-    public IProductRepository ProductRepository => new ProductRepository(context);
+    // public IProductRepository ProductRepository => new ProductRepository(context);
 
     public ISupplierRepository SupplierRepository => new SupplierRepository(context);
 

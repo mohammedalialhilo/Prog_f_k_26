@@ -11,7 +11,7 @@ using eShop.Data;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    [Migration("20260407085924_SqliteCreate")]
+    [Migration("20260407091102_SqliteCreate")]
     partial class SqliteCreate
     {
         /// <inheritdoc />
@@ -190,23 +190,20 @@ namespace eShop.Data.Migrations
 
             modelBuilder.Entity("eShop.Entities.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
