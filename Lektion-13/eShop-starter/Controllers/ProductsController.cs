@@ -1,7 +1,9 @@
+using eShop.Data;
 using eShop.DTOs.Products;
 using eShop.Entities;
 using eShop.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Controllers;
 
@@ -57,21 +59,21 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
 
     }
 
-    // [HttpGet("product/{itemNumber}")]
-    // public async Task<ActionResult> FindProduct(string itemNumber)
-    // {
-    //     try
-    //     {
-    //         var product = await uow.ProductRepository.FindProduct(itemNumber);
-    //         if (product is null) return NotFound();
+    [HttpGet("product/{itemNumber}")]
+    public async Task<ActionResult> FindProduct(string itemNumber)
+    {
+        try
+        {
+            var product = await repo.FindAsync(c => c.ItemNumber == itemNumber);
+            if (product is null) return NotFound();
 
-    //         return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = product });
-    //     }
-    //     catch
-    //     {
-    //         return StatusCode(500, "Något server fel inträffade, vi kan tyvärr inte hitta produkten.");
-    //     }
-    // }
+            return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = product });
+        }
+        catch
+        {
+            return StatusCode(500, "Något server fel inträffade, vi kan tyvärr inte hitta produkten.");
+        }
+    }
 
 
 
