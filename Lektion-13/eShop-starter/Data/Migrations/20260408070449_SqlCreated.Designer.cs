@@ -11,8 +11,8 @@ using eShop.Data;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    [Migration("20260407091102_SqliteCreate")]
-    partial class SqliteCreate
+    [Migration("20260408070449_SqlCreated")]
+    partial class SqlCreated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -235,6 +235,9 @@ namespace eShop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Brand")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
@@ -244,14 +247,20 @@ namespace eShop.Data.Migrations
                     b.Property<string>("ItemNumber")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ItemsInStock")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SupplierId")
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -480,13 +489,9 @@ namespace eShop.Data.Migrations
 
             modelBuilder.Entity("eShop.Entities.Product", b =>
                 {
-                    b.HasOne("eShop.Entities.Supplier", "Supplier")
+                    b.HasOne("eShop.Entities.Supplier", null)
                         .WithMany("Products")
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Supplier");
+                        .HasForeignKey("SupplierId");
                 });
 
             modelBuilder.Entity("eShop.Entities.SalesOrder", b =>
