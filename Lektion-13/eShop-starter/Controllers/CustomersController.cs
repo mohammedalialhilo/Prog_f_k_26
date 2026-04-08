@@ -46,10 +46,10 @@ public class CustomersController(IGenericRepository<Customer> repo) : Controller
     {
         try
         {
-            var customer = await repo.FindAsync(c => c.FirstName == name);
-            if (customer is null) return NotFound();
+            // var customer = await repo.FindAsync(c => c.FirstName == name);
+            // if (customer is null) return NotFound();
 
-            return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = customer });
+            return Ok(new { Success = true, StatusCode = 200, Items = 1/*, Data = customer*/ });
         }
         catch
         {
@@ -62,10 +62,10 @@ public class CustomersController(IGenericRepository<Customer> repo) : Controller
     {
         try
         {
-            var customer = await repo.FindAsync(c => c.LastName == name);
-            if (customer is null) return NotFound();
+            // var customer = await repo.FindAsync(c => c.LastName == name);
+            // if (customer is null) return NotFound();
 
-            return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = customer });
+            return Ok(new { Success = true, StatusCode = 200, Items = 1 });
         }
         catch
         {

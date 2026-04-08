@@ -1,0 +1,19 @@
+﻿using eShop.Entities;
+using eShop.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace eShop.Data;
+
+public class SpecificationValuator<T> where T:BaseEntity
+{
+    public static IQueryable<T> CreateQuery(IQueryable<T> query,ISpecification<T> spec)
+    {
+        if(spec.Predicate is not null)
+        {
+            query = query.Where(spec.Predicate);
+        }
+
+        return query;
+    }
+
+}

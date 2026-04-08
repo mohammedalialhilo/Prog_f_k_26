@@ -43,10 +43,10 @@ public class SuppliersController(IGenericRepository<Supplier> repo,IMapper mappe
     {
         try
         {
-            var supplier = await repo.FindAsync(c => c.SupplierName == name);
-            if (supplier is null) return NotFound();
+            // var supplier = await repo.FindAsync(c => c.SupplierName == name);
+            // if (supplier is null) return NotFound();
 
-            return Ok(new { Success = true, StatusCode = 200, Items = 1, Data = supplier });
+            return Ok(new { Success = true, StatusCode = 200, Items = 1/*, Data = supplier*/ });
         }
         catch
         {
