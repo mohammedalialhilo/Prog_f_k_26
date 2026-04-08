@@ -7,4 +7,16 @@ public class BaseSpecification<T>(Expression<Func<T,bool>>? predicate) : ISpecif
 {
     protected BaseSpecification():this(null){}
     public Expression<Func<T, bool>>? Predicate => predicate;
+
+    public Expression<Func<T, object>>? OrderByAscending {get; private set;}
+
+    public Expression<Func<T, object>>? OrderByDescending {get; private set;}
+    protected void UserOrderByAscending(Expression<Func<T, object>> orderByAscExpression)
+    {
+        OrderByAscending = orderByAscExpression;
+    }
+    protected void UserOrderByDecending(Expression<Func<T, object>> orderByDscExpression)
+    {
+        OrderByDescending = orderByDscExpression;
+    }
 }

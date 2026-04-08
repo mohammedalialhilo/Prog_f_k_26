@@ -14,12 +14,12 @@ namespace eShop.Controllers;
 public class ProductsController(IGenericRepository<Product> repo,IMapper mapper) : ControllerBase
 {
     [HttpGet()]
-    public async Task<ActionResult> ListAllProducts(string? brand)
+    public async Task<ActionResult> ListAllProducts(string? brand, string? sort)
     {
         try
         {
             // var products = await repo.ListAllAsync();
-            var spec = new ProductSpecification(itemNumber: null,brand);
+            var spec = new ProductSpecification(itemNumber: null,brand, sort:sort);
             var products = await repo.ListAsync(spec);
             var productsDto = mapper.Map<IList<GetProductsDto>>(products);
 
@@ -73,7 +73,7 @@ public class ProductsController(IGenericRepository<Product> repo,IMapper mapper)
         {
             // var product = await repo.FindAsync(c => c.ItemNumber == itemNumber);
 
-            var spec = new ProductSpecification(itemNumber,brand:null);
+            var spec = new ProductSpecification(itemNumber,brand:null,sort: null);
             var product = await repo.FindAsync(spec);
             if (product is null) return NotFound();
 
