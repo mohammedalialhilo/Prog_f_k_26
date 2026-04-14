@@ -1,0 +1,12 @@
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\bin\Debug\net10.0\core.deps.json
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\bin\Debug\net10.0\core.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\bin\Debug\net10.0\core.pdb
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.AssemblyInfoInputs.cache
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.AssemblyInfo.cs
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.csproj.CoreCompileInputs.cache
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.sourcelink.json
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\refint\core.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\core.pdb
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\core\obj\Debug\net10.0\ref\core.dll
