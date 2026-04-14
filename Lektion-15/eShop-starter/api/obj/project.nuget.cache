@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Cb8mHbr7Qss=",
+  "dgSpecHash": "yCHpKt45jHo=",
   "success": true,
   "projectFilePath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-15\\eShop-starter\\api\\api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\alhil\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.11.0\\microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
@@ -21,6 +22,10 @@
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\10.0.5\\microsoft.entityframeworkcore.sqlite.10.0.5.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\10.0.5\\microsoft.entityframeworkcore.sqlite.core.10.0.5.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.5\\microsoft.extensions.dependencymodel.10.0.5.nupkg.sha512",
+    "C:\\Users\\alhil\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.14.0\\microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
+    "C:\\Users\\alhil\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.14.0\\microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
+    "C:\\Users\\alhil\\.nuget\\packages\\microsoft.identitymodel.logging\\8.14.0\\microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "C:\\Users\\alhil\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.14.0\\microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.visualstudio.solutionpersistence\\1.0.52\\microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",

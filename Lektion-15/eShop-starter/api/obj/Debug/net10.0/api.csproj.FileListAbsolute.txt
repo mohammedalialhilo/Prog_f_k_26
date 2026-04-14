@@ -148,3 +148,8 @@ C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\obj\Debug\
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\obj\Debug\net10.0\api.pdb
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\obj\Debug\net10.0\api.genruntimeconfig.cache
 C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\obj\Debug\net10.0\ref\api.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\bin\Debug\net10.0\AutoMapper.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\alhil\Desktop\prfor\Prog_f_k_26\Lektion-15\eShop-starter\api\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
