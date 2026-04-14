@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g1NLh27t/TQ=",
+  "dgSpecHash": "4/R2tDB4mto=",
   "success": true,
-  "projectFilePath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
+  "projectFilePath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alhil\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",

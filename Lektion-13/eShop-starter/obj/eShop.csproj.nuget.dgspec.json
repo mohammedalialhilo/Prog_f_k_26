@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj": {}
+    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj": {}
   },
   "projects": {
-    "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj": {
+    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
+        "projectUniqueName": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
         "projectName": "eShop",
-        "projectPath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
+        "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\eShop.csproj",
         "packagesPath": "C:\\Users\\alhil\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\obj\\",
+        "outputPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-13\\eShop-starter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config"
