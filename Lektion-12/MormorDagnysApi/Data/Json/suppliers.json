@@ -1,0 +1,18 @@
+[
+  {
+    "supplierId": 1,
+    "name": "Kvarn och Korn AB",
+    "address": "Mjolnargatan 4, Uppsala",
+    "contactPerson": "Anna Berg",
+    "phoneNumber": "018-123456",
+    "email": "anna@kvarnochkorn.se"
+  },
+  {
+    "supplierId": 2,
+    "name": "Nordic Ravaror",
+    "address": "Bagerivagen 12, Vasteras",
+    "contactPerson": "Erik Lund",
+    "phoneNumber": "021-654321",
+    "email": "erik@nordicravaror.se"
+  }
+]

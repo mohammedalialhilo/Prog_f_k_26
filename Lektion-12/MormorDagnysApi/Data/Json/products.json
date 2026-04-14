@@ -1,0 +1,12 @@
+[
+  {
+    "productId": 1,
+    "articleNumber": "MJ-100",
+    "name": "Vetemjol"
+  },
+  {
+    "productId": 2,
+    "articleNumber": "SM-200",
+    "name": "Smor"
+  }
+]
