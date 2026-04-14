@@ -17,7 +17,7 @@ public class GenericRepository<T>(EShopContext context) : IGenericRepository<T> 
         context.Set<T>().Remove(entity);
     }
 
-    public async Task<T?> FindByIdAsync(int id)
+    public async Task<T?> FindByIdAsync(string id)
     {
        return await context.Set<T>().FindAsync(id);
     }
@@ -50,8 +50,5 @@ public class GenericRepository<T>(EShopContext context) : IGenericRepository<T> 
         return SpecificationValuator<T>.CreateQuery(context.Set<T>().AsQueryable(), spec);
     }
 
-    public Task<T?> FindByIdAsync(string id)
-    {
-        throw new NotImplementedException();
-    }
+    
 }
