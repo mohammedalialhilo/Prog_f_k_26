@@ -36,11 +36,22 @@ public class AccountsController(SignInManager<AppUser> signInManager) : ApiBaseC
     public async Task<ActionResult> UserInfo()
     {
         if(User.Identity?.IsAuthenticated == false)return NoContent();
-        var user = await signInManager.UserManager.Users.FirstOrDefaultAsync(c => c.Email == User.FindFirstValue(ClaimTypes.Email));
+
+        var user = await signInManager.UserManager.GetUserByEmailWithAddress(User);
         
-        if(user is null)return Unauthorized();
+        return Ok(new {
+        user.FirstName, 
+        user.LastName, 
+        user.Email,
+        Address = user.Address?.AddressLine,
+        user.Address?.PostalCode,
+        user.Address?.City
+         });
+        // var user = await signInManager.UserManager.Users.FirstOrDefaultAsync(c => c.Email == User.FindFirstValue(ClaimTypes.Email));
         
-        return Ok(new {user.FirstName, user.LastName, user.Email});
+        // if(user is null)return Unauthorized();
+        
+        // return Ok(new {user.FirstName, user.LastName, user.Email});
     }
 
     [HttpPost("address")]
