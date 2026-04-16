@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Jcz2zREpmjI=",
+  "dgSpecHash": "hp7Bj9bz+1w=",
   "success": true,
   "projectFilePath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-16\\eShop-starter\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alhil\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\alhil\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.5.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.11.0\\microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.codeanalysis.common\\5.0.0\\microsoft.codeanalysis.common.5.0.0.nupkg.sha512",

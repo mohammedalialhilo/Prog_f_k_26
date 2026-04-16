@@ -1,5 +1,4 @@
 using api.DTOs.Products;
-using api.Helpers;
 using AutoMapper;
 using core.Entities;
 using core.Interfaces;
