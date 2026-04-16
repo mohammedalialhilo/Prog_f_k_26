@@ -12,21 +12,12 @@ namespace api.Controllers
     public class ProductsController(IGenericRepository<Product> repo, IMapper mapper) : ControllerBase
     {
         [HttpGet()]
-        public async Task<ActionResult> ListAllProducts(string? brand, string? search, string? sort)
+        public async Task<ActionResult> ListAllProducts([FromQuery]ProductSpecificationParams args)
         {
-            ProductSpecification spec;
-            if (search is not null)
-            {
-                spec = new ProductSpecification(itemNumber: null, brand: null, search, sort: null);
-            }
-            else
-            {
-                spec = new ProductSpecification(itemNumber: null, brand: null, search: null, sort: null);
-            }
-
-            var products = await repo.ListAsync(spec);
-            var productsDto = mapper.Map<IList<GetProductsDto>>(products);
-            return Ok(productsDto);
+            var spec = new ProductSpecification(args);
+            var result = await repo.ListAsync(spec);
+            
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
@@ -36,15 +27,16 @@ namespace api.Controllers
             return Ok(product);
         }
 
-        [HttpGet("product/{itemNumber}")]
-        public async Task<ActionResult> FindProductByItemNumber(string itemNumber)
-        {
-            var spec = new ProductSpecification(itemNumber, brand: null, search: null, sort: null);
-            var product = await repo.FindAsync(spec);
+        // [HttpGet("product/{itemNumber}")]
+        // public async Task<ActionResult> FindProductByItemNumber(string itemNumber)
+        // {
+        //     var spec = new ProductSpecification(itemNumber, brand: null, search: null, sort: null);
+        //     var product = await repo.FindAsync(spec);
 
-            if (product is null) return NotFound();
-            return Ok(product);
-        }
+        //     if (product is null) return NotFound();
+            
+        //     return Ok();
+        // }
 
         [HttpPost()]
         public async Task<ActionResult> AddProduct(PostProductDto model)

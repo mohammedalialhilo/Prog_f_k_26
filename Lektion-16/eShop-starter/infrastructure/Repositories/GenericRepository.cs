@@ -17,7 +17,7 @@ public class GenericRepository<T>(EShopContext context) : IGenericRepository<T> 
         context.Set<T>().Remove(entity);
     }
 
-    public async Task<T> FindByIdAsync(string id)
+    public async Task<T?> FindByIdAsync(string id)
     {
         return await context.Set<T>().FindAsync(id);
     }
