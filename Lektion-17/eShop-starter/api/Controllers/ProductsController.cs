@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
-    public class ProductsController(IGenericRepository<Product> repo, IMapper mapper) : ApiBaseController
+    public class ProductsController(IGenericRepository<Product> repo,IGenericRepository<Supplier> supplierRepo, IMapper mapper) : ApiBaseController
     {
         [HttpGet()]
         public async Task<ActionResult> ListAllProducts([FromQuery] ProductSpecificationParams args)
@@ -29,6 +29,15 @@ namespace api.Controllers
             try
             {
                 var product = mapper.Map<Product>(model);
+
+                // var supplierSpec = new SupplierSpecification(new SupplierSpecificationParams{SupplierName = model.Supplier});
+
+                var supplierArgs = new SupplierSpecificationParams{SupplierName = model.Brand};
+                var supplierSpec = new SupplierSpecification(supplierArgs);
+                var supplier = await supplierRepo.FindAsync(supplierSpec);
+                if(supplier is null) return BadRequest($"Ingen leverantör hittades med namnet {model.Brand}");
+
+                product.Supplier = supplier;
 
                 repo.Add(product);
 
