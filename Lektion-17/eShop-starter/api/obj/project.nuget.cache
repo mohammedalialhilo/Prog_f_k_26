@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vdD0n0aYfOM=",
+  "dgSpecHash": "3Xgf3JOhJ/s=",
   "success": true,
-  "projectFilePath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alhil\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

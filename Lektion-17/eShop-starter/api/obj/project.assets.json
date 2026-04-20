@@ -2673,11 +2673,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
+      "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
       "packagesPath": "C:\\Users\\alhil\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\obj\\",
+      "outputPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2692,8 +2692,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
-              "projectPath": "c:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj"
+            "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
+              "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj"
             }
           }
         }

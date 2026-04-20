@@ -8,6 +8,8 @@ public class ProductSpecification : BaseSpecification<Product>
         (string.IsNullOrEmpty(args.Search) || c.ProductName.ToLower().Contains(args.Search.ToLower())) &&
         (string.IsNullOrWhiteSpace(args.ItemNumber) || (c.ItemNumber == args.ItemNumber)))
     {
+        //Includes...
+        AddInclude(c => c.Supplier! );
         // Paging...
         ApplyPagination(args.PageSize, args.PageSize * (args.PageNumber - 1));
 

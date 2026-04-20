@@ -19,6 +19,15 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? predicate) : ISpeci
 
     public bool IsPaginationActivated { get; private set; }
 
+    public List<Expression<Func<T, object>>> Includes {get;} = [];
+
+    protected void AddInclude(Expression<Func<T, object>> includeExpression)
+    {
+        Includes.Add(includeExpression);
+        
+    }
+
+
     protected void UserOrderByAscending(Expression<Func<T, object>> orderByAscExpression)
     {
         OrderByAscending = orderByAscExpression;
