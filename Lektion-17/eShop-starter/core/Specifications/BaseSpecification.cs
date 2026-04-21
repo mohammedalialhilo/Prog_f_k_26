@@ -20,10 +20,16 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? predicate) : ISpeci
     public bool IsPaginationActivated { get; private set; }
 
     public List<Expression<Func<T, object>>> Includes {get;} = [];
+    public List<string> NestedIncludes {get;} = [];
 
     protected void AddInclude(Expression<Func<T, object>> includeExpression)
     {
         Includes.Add(includeExpression);
+        
+    }
+    protected void AddInclude(string includeString)
+    {
+        NestedIncludes.Add(includeString);
         
     }
 
