@@ -16,13 +16,13 @@ public class ProductSpecification : BaseSpecification<Product>
         switch (args.Sort)
         {
             case "priceAsc":
-                UserOrderByAscending(c => c.Price);
+                UseOrderByAscending(c => c.Price);
                 break;
             case "priceDesc":
-                UserOrderByDescending(c => c.Price);
+                UseOrderByDescending(c => c.Price);
                 break;
             default:
-                UserOrderByAscending(c => c.ProductName);
+                UseOrderByAscending(c => c.ProductName);
                 break;
         }
     }

@@ -28,12 +28,12 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? predicate) : ISpeci
     }
 
 
-    protected void UserOrderByAscending(Expression<Func<T, object>> orderByAscExpression)
+    protected void UseOrderByAscending(Expression<Func<T, object>> orderByAscExpression)
     {
         OrderByAscending = orderByAscExpression;
     }
 
-    protected void UserOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
+    protected void UseOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
     {
         OrderByDescending = orderByDescExpression;
     }

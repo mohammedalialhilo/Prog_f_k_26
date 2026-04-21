@@ -12,7 +12,7 @@ public class SupplierSpecification : BaseSpecification<Supplier>
         switch (args.Sort)
         {
             default:
-                UserOrderByAscending(c => c.Name);
+                UseOrderByAscending(c => c.Name);
                 break;
         }
     }

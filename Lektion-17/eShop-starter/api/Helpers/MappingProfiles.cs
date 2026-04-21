@@ -1,4 +1,5 @@
-﻿using api.DTOs.Products;
+﻿using api.DTOs.Orders;
+using api.DTOs.Products;
 using api.DTOs.Suppliers;
 using AutoMapper;
 using core.Entities;
@@ -16,6 +17,7 @@ public class MappingProfiles : Profile
 
         CreateMap<PostSupplierDto, Supplier>();
         CreateMap<Supplier, GetSupplierDto>();
+        CreateMap<PostDeliveryMethodDto, DeliveryMethod>();
     }
 
 }
