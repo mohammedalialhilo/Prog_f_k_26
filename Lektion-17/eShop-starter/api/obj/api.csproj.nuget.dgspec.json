@@ -1,33 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj": {}
+    "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj": {
+    "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
+        "projectPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\api.csproj",
         "packagesPath": "C:\\Users\\alhil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\obj\\",
+        "outputPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
-                "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj"
+              "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
+                "projectPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj"
               }
             }
           }
@@ -72,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -490,22 +497,29 @@
         }
       }
     },
-    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj": {
+    "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj",
+        "projectUniqueName": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj",
         "projectName": "core",
-        "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj",
+        "projectPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj",
         "packagesPath": "C:\\Users\\alhil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\obj\\",
+        "outputPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -551,7 +565,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -829,30 +843,37 @@
         }
       }
     },
-    "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
+    "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj",
         "projectName": "infrastructure",
-        "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj",
+        "projectPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\infrastructure.csproj",
         "packagesPath": "C:\\Users\\alhil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alhil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj": {
-                "projectPath": "C:\\Users\\alhil\\Desktop\\prfor\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj"
+              "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj": {
+                "projectPath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-17\\eShop-starter\\core\\core.csproj"
               }
             }
           }
@@ -910,7 +931,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
