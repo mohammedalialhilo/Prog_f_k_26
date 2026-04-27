@@ -1,0 +1,13 @@
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\bin\Debug\net10.0\core.deps.json
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\bin\Debug\net10.0\core.dll
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\bin\Debug\net10.0\core.pdb
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.csproj.AssemblyReference.cache
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.AssemblyInfoInputs.cache
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.AssemblyInfo.cs
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.csproj.CoreCompileInputs.cache
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.sourcelink.json
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.dll
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\refint\core.dll
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\core.pdb
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\core\obj\Debug\net10.0\ref\core.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Dz/y44VJCls=",
+  "dgSpecHash": "srugI+eoy4Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-19\\eShop-starter\\core\\core.csproj",
+  "projectFilePath": "c:\\Users\\alhil\\OneDrive\\Skrivbord\\Programerin försetning k\\Prog_f_k_26\\Lektion-19\\eShop-starter\\core\\core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\10.0.5\\microsoft.aspnetcore.cryptography.internal.10.0.5.nupkg.sha512",
     "C:\\Users\\alhil\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\10.0.5\\microsoft.aspnetcore.cryptography.keyderivation.10.0.5.nupkg.sha512",

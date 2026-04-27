@@ -1,5 +1,6 @@
 ﻿using core.Entities;
 using core.Entities.Orders;
+using infrastructure.Config;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,17 +19,10 @@ public class EShopContext(DbContextOptions options) : IdentityDbContext<AppUser>
     {
         base.OnModelCreating(builder);
 
-        // Konfigurera Order entiteten...
-        builder.Entity<Order>().OwnsOne(c => c.ShippingAddress);
-        builder.Entity<Order>().OwnsOne(c => c.PaymentInfo);
-        builder.Entity<Order>().HasMany(c => c.OrderItems).WithOne().OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Order>().Property(c => c.Status).HasConversion(o => o.ToString(), o => Enum.Parse<OrderStatus>(o));
-        builder.Entity<Order>().Property(c => c.OrderDate).HasConversion(
-            c => c.ToUniversalTime(),
-            c => DateTime.SpecifyKind(c, DateTimeKind.Utc)
-        );
+        builder.ApplyConfigurationsFromAssembly(typeof(ProductConfiguration).Assembly);
 
-        // Konfigurera OrderItem entiteten...
-        builder.Entity<OrderItem>().OwnsOne(c => c.ItemOrdered, i => i.WithOwner());
+        
+
+        
     }
 }
