@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Include="Data\Json\**" CopyToOutputDirectory="PreserveNewest"/>
     <ProjectReference Include="..\core\core.csproj" />
   </ItemGroup>
 
@@ -13,9 +14,7 @@
     <PackageReference Include="StackExchange.Redis" Version="2.12.14" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Config/" />
-  </ItemGroup>
+
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>

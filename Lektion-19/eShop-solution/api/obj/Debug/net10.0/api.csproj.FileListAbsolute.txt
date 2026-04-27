@@ -191,3 +191,5 @@ C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\api\obj\Debug\net10.0\api.pdb
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\api\obj\Debug\net10.0\api.genruntimeconfig.cache
 C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\api\obj\Debug\net10.0\ref\api.dll
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\api\bin\Debug\net10.0\Data\Json\products.json
+C:\Users\alhil\OneDrive\Skrivbord\Programerin försetning k\Prog_f_k_26\Lektion-19\eShop-solution\api\bin\Debug\net10.0\Data\Json\suppliers.json
